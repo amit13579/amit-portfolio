@@ -36,8 +36,15 @@ export default function Home() {
           <a href="#experience" className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-slate-200 transition shadow-[0_0_20px_rgba(255,255,255,0.2)]">
             View Experience
           </a>
-          {/* Ensure your PDF is in the /public folder named correctly, e.g. /public/Amit_Kumar_Gupta_Resume.pdf */}
-          <a href="/Amit_Kumar_Gupta_Resume.pdf" download className="px-6 py-3 rounded-lg border border-slate-700 bg-slate-900/50 backdrop-blur-sm text-white font-medium hover:border-slate-500 transition flex items-center gap-2">
+          
+          {/* DOWNLOAD RESUME BUTTON */}
+          <a 
+            href="/Amit_Kumar_Gupta_Resume.pdf" 
+            download="Amit_Kumar_Gupta_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-lg border border-slate-700 bg-slate-900/50 backdrop-blur-sm text-white font-medium hover:border-slate-500 hover:bg-slate-800 transition flex items-center gap-2 cursor-pointer"
+          >
             <Download size={18} /> Download Resume
           </a>
         </div>
@@ -84,14 +91,14 @@ export default function Home() {
               <motion.div 
                 initial={false}
                 animate={{ height: activeExp === idx ? "auto" : 0, opacity: activeExp === idx ? 1 : 0 }}
-                className="overflow-hidden px-6 text-slate-400 text-sm md:text-base"
+                className="overflow-hidden"
               >
-                <div className="pb-6 border-t border-slate-800 pt-4 flex flex-col gap-3">
+                <div className="px-6 pb-6 border-t border-slate-800 pt-4 flex flex-col gap-3 text-slate-400 text-sm md:text-base">
                   <p className="text-slate-300 font-medium flex items-center gap-2"><MapPin size={16}/> {exp.location}</p>
                   <ul className="list-disc list-inside space-y-2 ml-1">
                     {exp.bullets.map((b, i) => <li key={i}>{b}</li>)}
                   </ul>
-                  {exp.stack && (
+                  {exp.stack && exp.stack.length > 0 && (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {exp.stack.map((s, i) => (
                         <span key={i} className="px-2 py-1 text-xs rounded bg-slate-800 text-slate-300 border border-slate-700">{s}</span>
@@ -153,7 +160,7 @@ export default function Home() {
         <p>© 2024 Amit Kumar Gupta. Turning Ideas into Scalable Applications.</p>
         <div className="flex items-center gap-4">
           <a href="mailto:amitkumargupta13579@gmail.com" className="hover:text-white transition flex items-center gap-1"><Mail size={16}/> Email</a>
-          <a href="https://www.linkedin.com/in/amit-kumar-gupta" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition flex items-center gap-1"><Linkedin size={16}/> LinkedIn</a>
+          <a href="https://www.linkedin.com/in/amit-kumar-gupta" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition flex items-center gap-1"><Linkedin size={16}/> LinkedIn</a>
         </div>
       </footer>
 
