@@ -32,9 +32,12 @@ export default function AnimatedBackground() {
       radius: number;
 
       constructor() {
-        if (!canvas) return;
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        // Providing fallback values so TypeScript knows these will never be empty
+        const width = canvas?.width || window.innerWidth;
+        const height = canvas?.height || window.innerHeight;
+
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
         this.vx = (Math.random() - 0.5) * 0.4;
         this.vy = (Math.random() - 0.5) * 0.4;
         this.radius = Math.random() * 1.5 + 0.5;
